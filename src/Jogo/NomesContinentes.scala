@@ -6,7 +6,7 @@
 
 package Jogo
 
-object ECont extends Enumeration {
+object NomesContinentes extends Enumeration {
   val AFRICA = Value("África")
   val AMERICANORTE = Value("América do Norte")
   val AMERICASUL = Value("América do Sul")

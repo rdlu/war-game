@@ -5,7 +5,7 @@
 
 package Jogo
 
-object EObj extends Enumeration {
+object LabelsObjetivos extends Enumeration {
   val EUR_OCE_OUTRO = Value("Europa, Oceania e outro")
   val AMESUL_ASIA = Value("América do Sul e Ásia")
   val AMESUL_EUR_OUTRO = Value("América do Sul, Europa e outro")

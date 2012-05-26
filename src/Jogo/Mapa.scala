@@ -1,9 +1,3 @@
-/* Trabalho prático de Modelos de Linguagens de Programação: Jogo War
-   Anderson Foscarini 180181
-   Paula Burguêz 180663
-   Ricardo Chagas Rapacki 180659
- */
-
 package Jogo
 
 class Mapa {      
@@ -40,12 +34,12 @@ class Mapa {
   private def ObjetivoEurOceanOutro () : Boolean = {
     var atingido: Boolean = false
     
-    if (Continentes(ECont.EUROPA.id).FoiConquistado){
-      if (Continentes(ECont.OCEANIA.id).FoiConquistado){
-        if (Continentes(ECont.AFRICA.id).FoiConquistado) atingido = true
-        if (Continentes(ECont.AMERICANORTE.id).FoiConquistado) atingido = true
-        if (Continentes(ECont.AMERICASUL.id).FoiConquistado) atingido = true
-        if (Continentes(ECont.ASIA.id).FoiConquistado) atingido = true        
+    if (Continentes(NomesContinentes.EUROPA.id).FoiConquistado){
+      if (Continentes(NomesContinentes.OCEANIA.id).FoiConquistado){
+        if (Continentes(NomesContinentes.AFRICA.id).FoiConquistado) atingido = true
+        if (Continentes(NomesContinentes.AMERICANORTE.id).FoiConquistado) atingido = true
+        if (Continentes(NomesContinentes.AMERICASUL.id).FoiConquistado) atingido = true
+        if (Continentes(NomesContinentes.ASIA.id).FoiConquistado) atingido = true
       }      
     }
    
@@ -56,8 +50,8 @@ class Mapa {
   private def ObjetivoAmsulAsia () : Boolean = {
     var atingido: Boolean = false
     
-    if (Continentes(ECont.ASIA.id).FoiConquistado)
-      if (Continentes(ECont.AMERICASUL.id).FoiConquistado)
+    if (Continentes(NomesContinentes.ASIA.id).FoiConquistado)
+      if (Continentes(NomesContinentes.AMERICASUL.id).FoiConquistado)
         atingido = true   
     
     atingido
@@ -67,12 +61,12 @@ class Mapa {
   private def ObjetivoAmsulEurOutro () : Boolean = {
     var atingido: Boolean = false
     
-    if (Continentes(ECont.AMERICASUL.id).FoiConquistado){
-      if (Continentes(ECont.EUROPA.id).FoiConquistado){
-        if (Continentes(ECont.AFRICA.id).FoiConquistado) atingido = true
-        if (Continentes(ECont.AMERICANORTE.id).FoiConquistado) atingido = true
-        if (Continentes(ECont.ASIA.id).FoiConquistado) atingido = true
-        if (Continentes(ECont.OCEANIA.id).FoiConquistado) atingido = true
+    if (Continentes(NomesContinentes.AMERICASUL.id).FoiConquistado){
+      if (Continentes(NomesContinentes.EUROPA.id).FoiConquistado){
+        if (Continentes(NomesContinentes.AFRICA.id).FoiConquistado) atingido = true
+        if (Continentes(NomesContinentes.AMERICANORTE.id).FoiConquistado) atingido = true
+        if (Continentes(NomesContinentes.ASIA.id).FoiConquistado) atingido = true
+        if (Continentes(NomesContinentes.OCEANIA.id).FoiConquistado) atingido = true
       }
     }
     
@@ -85,8 +79,8 @@ class Mapa {
   private def ObjetivoAfricaAsia () : Boolean = {
     var atingido: Boolean = false
     
-    if (Continentes(ECont.AFRICA.id).FoiConquistado)
-      if (Continentes(ECont.ASIA.id).FoiConquistado) atingido = true
+    if (Continentes(NomesContinentes.AFRICA.id).FoiConquistado)
+      if (Continentes(NomesContinentes.ASIA.id).FoiConquistado) atingido = true
     
     atingido
   }  
@@ -95,8 +89,8 @@ class Mapa {
   private def ObjetivoAfricaAmnorte () : Boolean = {
     var atingido: Boolean = false
     
-    if (Continentes(ECont.AFRICA.id).FoiConquistado)
-      if (Continentes(ECont.AMERICANORTE.id).FoiConquistado) atingido = true    
+    if (Continentes(NomesContinentes.AFRICA.id).FoiConquistado)
+      if (Continentes(NomesContinentes.AMERICANORTE.id).FoiConquistado) atingido = true
     
     atingido
   }    
@@ -108,22 +102,22 @@ class Mapa {
   private def ObjetivoAmnorteOceania () : Boolean = {
     var atingido: Boolean = false
     
-    if (Continentes(ECont.AMERICANORTE.id).FoiConquistado)
-      if (Continentes(ECont.OCEANIA.id).FoiConquistado) atingido = true    
+    if (Continentes(NomesContinentes.AMERICANORTE.id).FoiConquistado)
+      if (Continentes(NomesContinentes.OCEANIA.id).FoiConquistado) atingido = true
     
     atingido
   }   
   
   // verifica se um determinado objetivo foi atingido
-  def ObjetivoAtingido (Objetivo: EObj.Value) : Boolean = Objetivo match {
-    case EObj.EUR_OCE_OUTRO => ObjetivoEurOceanOutro 
-    case EObj.AMESUL_ASIA => ObjetivoAmsulAsia 
-    case EObj.AMESUL_EUR_OUTRO => ObjetivoAmsulEurOutro
-    case EObj.TERRITORIOS18 => Objetivo18territorios 
-    case EObj.AFR_ASIA => ObjetivoAfricaAsia 
-    case EObj.AFR_AMENORTE => ObjetivoAfricaAmnorte 
-    case EObj.TERRITORIOS24 => Objetivo24territorios
-    case EObj.AMENORTE_OCE => ObjetivoAmnorteOceania
+  def ObjetivoAtingido (Objetivo: LabelsObjetivos.Value) : Boolean = Objetivo match {
+    case LabelsObjetivos.EUR_OCE_OUTRO => ObjetivoEurOceanOutro
+    case LabelsObjetivos.AMESUL_ASIA => ObjetivoAmsulAsia
+    case LabelsObjetivos.AMESUL_EUR_OUTRO => ObjetivoAmsulEurOutro
+    case LabelsObjetivos.TERRITORIOS18 => Objetivo18territorios
+    case LabelsObjetivos.AFR_ASIA => ObjetivoAfricaAsia
+    case LabelsObjetivos.AFR_AMENORTE => ObjetivoAfricaAmnorte
+    case LabelsObjetivos.TERRITORIOS24 => Objetivo24territorios
+    case LabelsObjetivos.AMENORTE_OCE => ObjetivoAmnorteOceania
     case _ => false
   }  
   
