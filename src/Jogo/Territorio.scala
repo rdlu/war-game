@@ -15,6 +15,11 @@ class Territorio(val nome : String, val continente: Continente) {
   private var dominador: Jogador = JogadorNeutro
   private var vizinhos: Set[Territorio] = Set()
 
+  def initialize():Territorio = {
+    continente << this
+    this
+  }
+
   override def toString(): String = nome + " (" + continente.toString + ")"
 
   def getNome: String = nome
