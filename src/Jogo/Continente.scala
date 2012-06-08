@@ -8,6 +8,8 @@ class Continente (nome: String) {
   // retorna a lista de territórios
   def getTerritorios: Set[Territorio] = Territorios
 
+  override def toString() = nome
+
   //sobrecarrega << para adicionar o territorio ao continente
   def <<(t:Territorio) :Continente = {
     if (t.continente.equals(this)) Territorios += t

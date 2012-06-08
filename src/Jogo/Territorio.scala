@@ -8,12 +8,13 @@ case class TerritorioException(s:String) extends Exception(s)
 /*
 * Territorio: classe que controla TUDO que acontece dentro de um pais
 * */
-//val cria automaticamente um getter (variavel somente leitura)
-class Territorio(val nome : String, val continente: Continente) {
+
+
+ //val cria automaticamente um getter (variavel somente leitura)
+class Territorio(val nome : String, val continente: Continente, val x: Int, val y: Int) {
   private var tropas : Int = 0
   //0 eh pais neutro
   private var dominador: Jogador = JogadorNeutro
-  private var vizinhos: Set[Territorio] = Set()
 
   def initialize():Territorio = {
     continente << this
@@ -22,9 +23,8 @@ class Territorio(val nome : String, val continente: Continente) {
 
   override def toString(): String = nome + " (" + continente.toString + ")"
 
-  def getNome: String = nome
-
   //adicionar tropas do crescimento vegetativo
+  //polimorsfismo
   def tropas(qtd:Int, jogador: Jogador): Territorio = {
     if (qtd > 0) {
       //dominador deve ser setado antes, devido a validacao
@@ -36,6 +36,7 @@ class Territorio(val nome : String, val continente: Continente) {
   }
 
   //mover tropas de outro territorio
+  //polimorfismo
   def tropas(qtd: Int, t:Territorio): Territorio = {
     if (!isVizinho(t)) throw new TerritorioException("Nao se pode mover tropas de paises nao vizinhos")
     else tropas(t.removeTropas(qtd),t.getDominador)
@@ -64,17 +65,13 @@ class Territorio(val nome : String, val continente: Continente) {
 
   def getDominador: Jogador  = dominador
 
-  def getVizinhos: Set[Territorio] = vizinhos
-
-  def setVizinhos(set: Set[Territorio]): Territorio = {
-    vizinhos = set
-    this
-  }
-
-  def pushVizinho(t:Territorio): Territorio = {
-    vizinhos += t
-    this
-  }
+  def vizinhos(): Set[Territorio] = Vizinhos.from(this)
 
   def isVizinho(t:Territorio): Boolean = vizinhos.contains(t)
+
+  def reset(): Territorio = {
+    dominador = JogadorNeutro
+    tropas = 0
+    this
+  }
 }
