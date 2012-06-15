@@ -4,9 +4,9 @@ import Jogo._
 
 object Main {
   def main(args: Array[String]): Unit = {
-    val j: JanelaMapa = new JanelaMapa()
-    j.initialize()
-    j.setVisible(true) 
+    val j = new JanelaNovoJogo
+    j.inicializa()
+    j.setVisible(true)
   }
 }
 

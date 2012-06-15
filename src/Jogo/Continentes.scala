@@ -9,7 +9,7 @@ object Continentes {
   val EUROPA = new Continente("Europa")
   val OCEANIA = new Continente("Oceania")
   //Enumeration do scala nao itera do jeito desejado, entao criei o values
-  val values: Array[Continente] = Array(NAMERICA,SAMERICA,EUROPA,AFRICA,ASIA)
+  val values: List[Continente] = List(NAMERICA,SAMERICA,EUROPA,AFRICA,ASIA)
 }
 
 object Territorios {
@@ -62,7 +62,7 @@ object Territorios {
   val NEWGUINEA = new Territorio("Nova Guine",Continentes.OCEANIA,893,366)
   val WAUSTRALIA  = new Territorio("Australia Ocidental",Continentes.OCEANIA,835,440)
 
-  val values: Array[Territorio] = Array(
+  val values: List[Territorio] = List(
     ALASKA,ALBERTA,CAMERICA,EASTUS,GREENLAND,NWTERRITORY,ONTARIO,QUEBEC,WESTUS,
     ARGENTINA,BRASIL,PERU,VENEZUELA,
     GBRITAIN,ICELAND,NEUROPE,SCANDINAVIA,SEUROPE,UKRAINE,WEUROPE,
